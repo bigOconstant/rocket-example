@@ -1,3 +1,5 @@
+
+
 #![feature(proc_macro_hygiene, decl_macro,plugin)]
 
 #[macro_use] 
@@ -12,6 +14,7 @@ extern crate serde;
 #[macro_use]
 extern crate serde_json;
 
+extern crate reqwest;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Person {
@@ -24,7 +27,9 @@ use rocket_contrib::json::Json;
 #[get("/person" )]
 fn person() -> Json<Person> {
     let Bob:Person = Person{name:"Bob".to_string(),age:32};
+    
     Json(Bob)
+        
 }
 
 #[get("/" )]
